@@ -1,0 +1,44 @@
+{
+    "name": "@rahulv.dev/weighted-list",
+    "version": "0.0.1",
+    "description": "A weighted list provider to pick a random entry on the basis of the weights of the objects.",
+    "main": "dist/index.js",
+    "types": "types/index.d.ts",
+    "scripts": {
+        "build": "tsc && vite build",
+        "dev": "vite",
+        "test": "vitest --run"
+    },
+    "files": [
+        "dist",
+        "types"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rahulv-official/random-number-generator.git"
+    },
+    "keywords": [
+        "random-number-generator",
+        "rng",
+        "weighted-list",
+        "random-weighted-list"
+    ],
+    "author": "Rahul Vashishtha <https://rahulv.dev>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/rahulv-official/weighted-list/issues"
+    },
+    "homepage": "https://github.com/rahulv-official/weighted-list#readme",
+    "devDependencies": {
+        "@semantic-release/git": "^10.0.1",
+        "@semantic-release/npm": "^12.0.1",
+        "@types/node": "^22.0.0",
+        "semantic-release": "^24.0.0",
+        "typescript": "^5.5.4",
+        "vite": "^5.3.5",
+        "vitest": "^2.0.5"
+    },
+    "dependencies": {
+        "@rahulv.dev/rng": "^1.0.1"
+    }
+}
