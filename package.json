@@ -1,6 +1,6 @@
 {
     "name": "@rahulv.dev/weighted-list",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A weighted list provider to pick a random entry on the basis of the weights of the objects.",
     "main": "dist/index.js",
     "types": "types/index.d.ts",
