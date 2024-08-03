@@ -1,4 +1,4 @@
-import { IRNG } from "@rahulv.dev/rng";
+import { IRNG, RNG } from "@rahulv.dev/rng";
 import { WeightedListItem } from "./weighted-list-item";
 
 export class WeightedList<T> {
@@ -6,8 +6,13 @@ export class WeightedList<T> {
     #totalWeight: number = 0;
     #rng: IRNG;
 
-    constructor(rng: IRNG) {
-        this.#rng = rng;
+    constructor(rng?: IRNG) {
+        if(rng) {
+            this.#rng = rng;
+        }
+        else {
+            this.#rng = new RNG();
+        }
     }
 
     public add(item: T, weight: number): WeightedList<T> {
@@ -21,16 +26,16 @@ export class WeightedList<T> {
         return this;
     }
 
-    public async pickRandom(): Promise<T> {
-        return (await this.pickRandomEntry()).obj;
+    public pickRandom(): T {
+        return this.pickRandomEntry().obj;
     }
 
-    public async pickRandomEntry(): Promise<WeightedListItem<T>> {
+    public pickRandomEntry(): WeightedListItem<T> {
         if (this.#items.length === 0) {
             throw new Error("This weighted list is empty.");
         }
 
-        const randomValue = await this.#rng.next(this.#totalWeight);
+        const randomValue = this.#rng.next(this.#totalWeight);
         let cumulativeWeight = 0;
 
         for (const item of this.#items) {

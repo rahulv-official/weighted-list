@@ -67,15 +67,15 @@ weightedList.clear();
 
 ### WeightedList<T>
 
-| Method                                                                | Description                                                           |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `constructor(rng: IRNG)`                                              | Creates a new `WeightedList` instance with a random number generator. |
-| `add(item: T, weight: number): WeightedList<T>`                       | Adds an item with a specified weight to the list.                     |
-| `pickRandom(): Promise<T>`                                            | Asynchronously picks a random item based on the weights.              |
-| `pickRandomEntry(): Promise<WeightedListItem<T>>`                     | Asynchronously picks a random entry (item and weight).                |
-| `remove(item: T): WeightedListItem<T> \| null`                        | Removes an item by its object value and returns the removed entry.    |
-| `removeItems(item: WeightedListItem<T>): WeightedListItem<T> \| null` | Removes an item by its `WeightedListItem` instance.                   |
-| `clear(): void`                                                       | Clears all items from the list.                                       |
+| Method                                                                | Description                                                                                                    |
+| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `constructor(rng: IRNG)`                                              | Creates a new `WeightedList` instance with a random number generator. Will initialise own RNG if not provided. |
+| `add(item: T, weight: number): WeightedList<T>`                       | Adds an item with a specified weight to the list.                                                              |
+| `pickRandom(): T`                                                     | Picks a random item based on the weights.                                                                      |
+| `pickRandomEntry(): WeightedListItem<T>`                              | Picks a random entry (item and weight).                                                                        |
+| `remove(item: T): WeightedListItem<T> \| null`                        | Removes an item by its object value and returns the removed entry.                                             |
+| `removeItems(item: WeightedListItem<T>): WeightedListItem<T> \| null` | Removes an item by its `WeightedListItem` instance.                                                            |
+| `clear(): void`                                                       | Clears all items from the list.                                                                                |
 
 ### WeightedListItem<T>
 

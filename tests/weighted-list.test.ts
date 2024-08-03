@@ -1,24 +1,12 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { IRNG, RNG } from "@rahulv.dev/rng";
 import { WeightedList } from "../src";
 import { WeightedListItem } from "../src";
 
-class MockRNG implements IRNG {
-    nextRange(ranges: number[]): Promise<number[]> {
-        throw new Error('Method not implemented.');
-    }
-    next(max: number): Promise<number> {
-        return Promise.resolve(Math.floor(Math.random() * max));
-    }
-}
-
 describe('WeightedList', () => {
-    let rng: IRNG;
     let weightedList: WeightedList<string>;
 
     beforeEach(() => {
-        rng = new MockRNG();
-        weightedList = new WeightedList<string>(rng);
+        weightedList = new WeightedList<string>();
     });
 
     it('should add items with weight', () => {
@@ -46,12 +34,12 @@ describe('WeightedList', () => {
     it('should pick random item', async () => {
         weightedList.add("item1", 5);
         weightedList.add("item2", 10);
-        const randomItem = await weightedList.pickRandom();
+        const randomItem = weightedList.pickRandom();
         expect(["item1", "item2"]).toContain(randomItem);
     });
 
     it('should throw error if list is empty when picking random', async () => {
-        await expect(weightedList.pickRandomEntry()).rejects.toThrow("This weighted list is empty.");
+        expect(() => weightedList.pickRandomEntry()).toThrow("This weighted list is empty.");
     });
 
     it('should clear the list', () => {
